@@ -10,7 +10,7 @@ services:
   - docker:dind
 
 before_script:
-  - docker login -u $DOCKER_REGISTRY_USERNAME -p $DOCKER_REGISTRY_PASSWORD
+  - docker login -u "gitlab-ci-token" -p $CI_JOB_TOKEN
 
 build:
   stage: build
