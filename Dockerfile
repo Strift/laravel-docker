@@ -1,4 +1,4 @@
-FROM php:7.2-fpm
+FROM php:7.3-fpm
 
 # Update packages and install composer and PHP dependencies.
 RUN apt-get update && \
@@ -29,7 +29,7 @@ RUN docker-php-ext-install \
   # tokenizer \
   # xml \
   gd \
-  zip \
+  # zip \
   bcmath
 # RUN docker-php-ext-install mcrypt zip bz2 mbstring pdo pdo_pgsql pcntl \
 #   && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
@@ -60,8 +60,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Install NVM
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 RUN . /root/.nvm/nvm.sh \
-  && nvm install lts/carbon \
-  && nvm use lts/carbon
+  && nvm install lts/dubnium \
+  && nvm use lts/dubnium
 
 ADD . /var/www/html
 WORKDIR /var/www/html
